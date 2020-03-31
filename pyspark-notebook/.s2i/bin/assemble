@@ -4,7 +4,7 @@
 APACHE_SPARK_VERSION=2.4.5
 HADOOP_VERSION=2.7
 
-yum install --no-install-recommends -y openjdk-8-jre-headless ca-certificates-java
+yum install -y openjdk-8-jre-headless ca-certificates-java
 
 # Using the preferred mirror to download the file
 cd /tmp
