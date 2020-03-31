@@ -6,7 +6,7 @@ USER root
 ENV APACHE_SPARK_VERSION=2.4.5 \
     HADOOP_VERSION=2.7
 
-RUN yum install -y openjdk-8-jre-headless ca-certificates-java wget
+RUN yum install java-1.8.0-openjdk-headless -y
 
 # Using the preferred mirror to download the file
 RUN cd /tmp && \
