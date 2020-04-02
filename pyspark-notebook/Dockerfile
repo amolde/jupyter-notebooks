@@ -9,11 +9,6 @@ ENV APACHE_SPARK_VERSION=2.4.5 \
 RUN yum install java-1.8.0-openjdk-headless -y && \
     yum clean all
 
-# RUN which java && java -version
-
-# RUN yum install -y java-1.8.0-openjdk && \
-    # yum clean all
-
 # Using the preferred mirror to download the file
 RUN cd /tmp && \
     wget -q $(wget -qO- https://www.apache.org/dyn/closer.lua/spark/spark-${APACHE_SPARK_VERSION}/spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz\?as_json | \
@@ -26,7 +21,7 @@ RUN cd /usr/local && ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERS
 # Spark config
 ENV JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk \
     SPARK_HOME=/usr/local/spark
-ENV PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:/opt/app-root/src \
+ENV PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:/opt/app-root/src \
     SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
     PATH=$PATH:$SPARK_HOME/bin
 
