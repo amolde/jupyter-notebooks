@@ -1,4 +1,4 @@
-FROM quay.io/jupyteronopenshift/s2i-minimal-notebook-py36:2.5.1
+FROM docker-registry.default.svc:5000/spark/jupyter-notebook-scipy:latest
 
 USER root
 
@@ -21,23 +21,23 @@ RUN cd /usr/local && ln -s spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERS
 # Spark config
 ENV JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk \
     SPARK_HOME=/usr/local/spark
-ENV PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:/opt/app-root/src \
+ENV PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:/opt/app-root/src \
     SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
     PATH=$PATH:$SPARK_HOME/bin
 
-COPY . /tmp/src
+# COPY . /tmp/src
 
-RUN rm -rf /tmp/src/.git* && \
-    chown -R 1001 /tmp/src && \
-    chgrp -R 0 /tmp/src && \
-    chmod -R g+w /tmp/src && \
-    rm -rf /tmp/scripts && \
-    mv /tmp/src/.s2i/bin /tmp/scripts
+# RUN rm -rf /tmp/src/.git* && \
+#     chown -R 1001 /tmp/src && \
+#     chgrp -R 0 /tmp/src && \
+#     chmod -R g+w /tmp/src && \
+#     rm -rf /tmp/scripts && \
+#     mv /tmp/src/.s2i/bin /tmp/scripts
 
-ENV XDG_CACHE_HOME=/opt/app-root/src/.cache
+# ENV XDG_CACHE_HOME=/opt/app-root/src/.cache
 
 USER 1001
 
-RUN /tmp/scripts/assemble
+# RUN /tmp/scripts/assemble
 
 CMD [ "/opt/app-root/builder/run" ]
