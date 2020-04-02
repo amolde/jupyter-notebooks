@@ -25,12 +25,12 @@ ENV PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:/op
     SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
     PATH=$PATH:$SPARK_HOME/bin
 
-COPY . /tmp/src
+# COPY . /tmp/src
 
-RUN rm -rf /tmp/src/.git* && \
-    chown -R 1001 /tmp/src && \
-    chgrp -R 0 /tmp/src && \
-    chmod -R g+w /tmp/src
+# RUN rm -rf /tmp/src/.git* && \
+#     chown -R 1001 /tmp/src && \
+#     chgrp -R 0 /tmp/src && \
+#     chmod -R g+w /tmp/src && \
     # rm -rf /tmp/scripts && \
     # mv /tmp/src/.s2i/bin /tmp/scripts
 
@@ -39,6 +39,7 @@ RUN rm -rf /tmp/src/.git* && \
 USER 1001
 
 # RUN /tmp/scripts/assemble
-RUN /opt/app-root/builder/assemble
+# RUN /opt/app-root/builder/assemble
+RUN pip install pyarrow
 
 CMD [ "/opt/app-root/builder/run" ]
