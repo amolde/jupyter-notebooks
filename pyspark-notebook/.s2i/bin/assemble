@@ -29,6 +29,14 @@ cd facets
 
 jupyter nbextension install facets-dist/ --sys-prefix
 
+# https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-jupyter-notebook-install-locally
+# https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html
+# https://blog.jupyter.org/on-demand-notebooks-with-jupyterhub-jupyter-enterprise-gateway-and-kubernetes-e8e423695cbf
+jupyter serverextension enable --py sparkmagic
+
+# http://bailiwick.io/2018/08/31/connect-jupyter-to-remote-spark-clusters-with-apache-toree/
+jupyter toree install --spark_home=${SPARK_HOME} --kernel_name="Spark"
+
 cd $HOME
 
 rm -rf /tmp/facets

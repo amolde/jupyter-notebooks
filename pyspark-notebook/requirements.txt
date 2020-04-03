@@ -25,3 +25,5 @@ vincent==0.4.*
 xlrd==1.2.*
 
 pyarrow==0.16.*
+sparkmagic==0.15.*
+toree==0.3.*
