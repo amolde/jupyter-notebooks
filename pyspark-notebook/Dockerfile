@@ -29,6 +29,7 @@ RUN echo "spark.master spark://my-spark-cluster.spark.svc:7077" >> ${SPARK_HOME}
 
 RUN wget -P ${SPARK_HOME}/jars https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.11.756/aws-java-sdk-1.11.756.jar && \
     wget -P ${SPARK_HOME}/jars https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.7/hadoop-aws-2.7.7.jar && \
+    wget -P ${SPARK_HOME}/jars https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar && \
     wget -P ${SPARK_HOME}/jars https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/8.2.2.jre8/mssql-jdbc-8.2.2.jre8.jar && \
     wget -P ${SPARK_HOME}/jars https://repo1.maven.org/maven2/com/facebook/presto/presto-jdbc/0.233.1/presto-jdbc-0.233.1.jar
 

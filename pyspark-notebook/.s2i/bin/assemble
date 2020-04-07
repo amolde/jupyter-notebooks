@@ -29,6 +29,7 @@ cd facets
 
 jupyter nbextension install facets-dist/ --sys-prefix
 
+# https://github.com/databricks/spark-knowledgebase/issues/9
 # https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-jupyter-notebook-install-locally
 # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/recipes.html
 # https://blog.jupyter.org/on-demand-notebooks-with-jupyterhub-jupyter-enterprise-gateway-and-kubernetes-e8e423695cbf
